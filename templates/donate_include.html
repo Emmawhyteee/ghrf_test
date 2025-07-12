@@ -1,0 +1,115 @@
+<section class="container py-5">
+    <!-- Flash messages for errors or success -->
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="row">
+                <div class="col-12">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %} -->
+
+    <!-- Donate Header -->
+    <!-- <div class="donate-header "> -->
+    <div class=" mb-2">
+        <h3>Donate</h3>
+        <!-- <p>Your donations help us bring real change to the lives of millions.</p> -->
+    </div>
+
+    <!-- Donation Process -->
+    <div class="row donate-process mb-5">
+        <div class="col-md-5">
+            <img src="{{ url_for('static', filename='images2/image-333.webp') }}" alt="Donation Image" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+            <p>We are constructing state-of-the-art hospitals to provide quality healthcare services to communities in need.
+                We are constructing state-of-the-art hospitals to provide quality healthcare services to communities in need</p>
+        </div>
+    </div>
+
+    <!-- How it helps us -->
+    <div class="donate-steps d-flex justify-content-around align-items-center text-center ">
+        <div class="step mb-5">
+            <i class="fas fa-hands-helping fa-1x icon2"></i>
+            <h5>You Give</h5>
+            <p>We receive your <br>donations with every <br>bit of love.</p>
+        </div>
+        <div class="step mb-5">
+            <i class="fas fa-hand-holding-usd fa-1x icon3"></i>
+            <h5>We Invest</h5>
+            <p>We take those donations <br> and invest them in life <br>changing projects.</p>
+        </div>
+        <div class="step mb-5">
+            <i class="fas fa-people-carry fa-1x icon4"></i>
+            <h5>We Get Results</h5>
+            <p>Your investments <br> change the lives of <br> millions.</p>
+        </div>
+    </div>
+
+    <!-- Donation Form -->
+    <div class="row justify-content-center mt-5 donationn">
+        <div class="col-lg-6">
+            <div class="donation-form bg-light p-4 rounded shadow mx-5 my-5">
+                <h3 class="text-center mb-4">Donate</h3>
+                <form method="POST" action="/donate/">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}" >
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your fullname" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Your Phone number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+234" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject (optional)</label>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="#" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="card-number" class="form-label">Card number</label>
+                        <input type="text" class="form-control" id="card-number" name="card-number" placeholder="1234 0938 0938 0984" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expiry-date" class="form-label">Expiry date</label>
+                            <input type="text" class="form-control" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="***" required>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Link -->              <!--the javascript handling this part is in base.html,js section-->
+    <div class="donation-link mt-4 text-center">
+        <p>or you can copy and paste this link</p>
+        <input type="text" class="form-control-plaintext" readonly value="https://www.ghri/building-hospitals/donate?26y6N">
+        <button class="btn btn-light" id="copyButton">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+</section>

@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+
+
+
+{% block hero %}
+<section class="vsignup1body">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="row form-container formm w-100 shadow-lg">
+            <!-- Sidebar for Steps -->
+            <div class="col-md-3 left-bg py-4">
+                <ul class="stepper">
+                    <li class="d-flex align-items-center active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Account Verification</div>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Personal Details</div>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Volunteering Details</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Form -->
+            <div class="col-md-9 py-4">
+                <h3 class="mb-4">Volunteer's Registration Form</h3>
+                <p class="text-muted">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    Please, this form retrieves details from our volunteer database. If you are not registered, click <a href="#" class="text-primary">here</a> to register before creating an account.
+                </p>
+                <form>
+                    <!-- Name Field -->
+                    <div class="mb-4">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your full name as registered">
+                    </div>
+                    <!-- Email Field -->
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="e.g. jamesjohnson@gmail.com">
+                    </div>
+                    <!-- Verify Button -->
+                    <button type="button" class="btn btn-verify px-4">Verify</button>
+                </form>
+                <!-- Back Button -->
+                <div class="mt-4">
+                    <a href="#" class="text-primary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

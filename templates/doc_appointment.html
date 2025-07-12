@@ -1,0 +1,230 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+  
+
+<div class="container-fluid">  
+    <div class="row">  
+        <div class="col-md-3 sidebar" style="background-color: #e2eefc; border-radius: 5px;">  
+            <!--profile-->
+            <div class="dropdown text-center mt-2">
+                <a
+                href="#"
+                class="d-block link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >
+            
+                <img
+                src="../static/images2/avatar.jpg"
+                alt="mdo"
+                width="50"
+                height="50"
+                class="rounded-circle"
+                />
+                </a>
+                <ul class="dropdown-menu text-small">
+                <li>
+                    <a class="dropdown-item dash2" href="{{url_for('change_dp')}}">Upload DP</a>
+                </li>  
+                <br>
+                <li><hr class="dropdown-divider" /></li>
+                
+                </ul>
+
+                <h6>Dr. James Johnson</h6>  
+                <p>Hope Hospital</p>  
+                <p><strong>Gynecologist</strong></p> 
+            </div>
+            <nav class="nav flex-column">  
+                <a class="nav-link text-muted" href="{{url_for('doc_dashboard')}}">Dashboard</a>  
+                <a class="nav-link text-muted" href="{{url_for('doc_appointment')}}">Appointment</a>  
+                <a class="nav-link text-muted" href="{{url_for('doc_message')}}">Message</a>  
+                <a class="nav-link text-muted" href="{{url_for('doc_profile')}}">Profile</a>  
+                <a class="nav-link text-muted" href="{{url_for('doc_settings')}}">Settings</a>  
+                <a class="nav-link text-muted" href="#">Query</a>  
+            </nav>  
+        </div>  
+
+        <div class="col-md-9">  
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-2" style="background-color: #e2eefc; border-radius: 8px; padding: .5em;" >  
+                
+                <div class="form-group col-md-7" >  
+                    <input type="text" class="form-control w-50" placeholder="Gynecologist...">  
+                </div>  
+
+                <div class="col-md-4">
+                    <i class="fa fa-bell"></i>
+                    <i class="fa fa-comment ms-3"></i>
+                    <img
+                src="../static/images2/avatar.jpg"
+                alt="mdo"
+                width="50"
+                height="50"
+                class="rounded-circle ms-5"
+                />
+                </div>
+            </div>  
+
+            <div class="d-flex justify-content-between">  
+                <div class="col-md-8">
+                    <div class="row mb-2 mx-1 py-2 " style="background-color: #e2eefc; border-radius: 5px;">  
+                       
+            
+                            <!-- patient overview -->
+                            
+        
+                            <div class="col-md-12">
+            
+                                <div class="card mb-4 p-3">  
+                                    <h5>Today's Appointment</h5>  
+                                    <!-- <canvas id="patientOverviewChart"></canvas>   -->
+                                     
+                    <div class="card mb-4 p-3" style="background-color: #e2eefc; border-radius: 5px;">  
+                       
+                        <div class="container mt-4">
+                            <h2>Welcome, Dr. </h2>
+                            <!-- <h4>Your Appointments</h4> -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Summary</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Patient Email</th>
+                                        <th>Patient Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for appointment in appointments %}
+                                    <tr>
+                                        <td>{{ appointment.id }}</td>
+                                        <td>{{ appointment.summary }}</td>
+                                        <td>{{ appointment.start_time }}</td>
+                                        <td>{{ appointment.end_time }}</td>
+                                        <td>{{ appointment.patient_email }}</td>
+                                        <td>{{ appointment.patient_name }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No appointments found.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <a href="{{url_for('appointment')}}" class="btn btn-primary">Back to Calendar</a>
+                        </div>
+                    </div>  
+
+
+                </div>
+    
+                                    
+                                </div>  
+                            </div>
+                            
+                        
+                    </div>  
+        
+        
+                    <div class="card mb-4 p-3" style="background-color: #e2eefc; border-radius: 5px;">  
+                        <h5>Today's Appointment</h5>  
+                        <ul class="list-group">  
+                            <li class="list-group-item d-flex justify-content-between align-items-center mb-1">  
+                                Mary James <span class="badge bg-success">Ongoing</span> <small>09:00</small>  
+                            </li>  
+                            <li class="list-group-item mb-1">Mary James <small>09:00</small> <button class="btn btn-sm btn-outline-primary">View Details</button></li>  
+                            <li class="list-group-item mb-1">Mary James <small>09:00</small> <button class="btn btn-sm btn-outline-primary">View Details</button></li>  
+                        </ul>  
+                    </div>  
+
+
+                </div>
+    
+                <div class="col-md-4">
+
+                    <div class="card p-3 mb-4">  
+                        <h5>Next Patient Details</h5>  
+                        <p><strong>Mary James</strong> (Video Call) - 09:00</p>  
+                        <p>D.O.B: 15-Jan-2024</p>  
+                        <p>Sex: M</p>  
+                        <p>Last Appointment: 15-Jan-2021</p>  
+                        <h6>Patient History</h6>  
+                        <ul>  
+                            <li>Allergies</li>  
+                            <li>Chronic Illness</li>  
+                        </ul>  
+                        <p>Uploaded Document: <a href="#">doc 352.wrd</a></p>  
+                    </div>  
+        
+                    
+                    <div class="card p-3">  
+                        <h5>Notifications</h5>  
+                        <p>You have a new booking by James Johnson, slated for 15th November 2024 - 09:00. <a href="#">Click to go to appointment</a></p>  
+                    </div>  
+                    
+                    
+
+                </div>   
+        
+            </div>
+
+          
+
+        </div>
+        
+       
+        
+    </div>  
+
+    
+
+</div>  
+
+<script>
+    //   Chart.js code for rendering the patient overview chart  
+      const ctx = document.getElementById('patientOverviewChart').getContext('2d');  
+    const patientOverviewChart = new Chart(ctx, {  
+        type: 'bar',  
+        data: {  
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],  
+            datasets: [{  
+                label: 'Female',  
+                data: [3, 4, 2, 4, 5, 2, 3],  
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',  
+            }, {  
+                label: 'Male',  
+                data: [2, 1, 3, 3, 2, 1, 4],  
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',  
+            }]  
+        },  
+        options: {  
+            responsive: true,  
+            scales: {  
+                y: {  
+                    beginAtZero: true  
+                }  
+            }  
+        }  
+    });  
+</script>
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

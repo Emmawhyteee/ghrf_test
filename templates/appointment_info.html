@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+
+<section class="bg-light p-4">  
+    <div class="container">  
+        <div class="d-flex justify-content-between">  
+            <div class="steps col-lg-4 pb-5" style="background-color: #c7def7; border-radius: 5px; margin-right: 4rem; padding: 10px;">  
+                <div class="step active"><span class="step-circle">1</span> Appointment Information</div>  
+                <div class="step"><span class="step-circle1">2</span> Patient Information</div>  
+                  
+            </div>  
+
+            <div class="card-body col-md-8">  
+                <form action="{{url_for('doc_appointment')}}" method="POST">  
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    <div class="mb-3">  
+                        <label for="reason" class="form-label">Describe Reason for Visit</label>  
+                        <textarea name="reason" id="reason" class="form-control" required></textarea>  
+                    </div>  
+
+                    <div class="mb-3">  
+                        <label class="form-label">Consultation Medium</label>  
+                        <div class="form-check">  
+                            <input type="radio" name="consultation_medium" value="Video Call" class="form-check-input" id="videoCall">  
+                            <label class="form-check-label" for="videoCall">Video Call</label>  
+                        </div>  
+                        <div class="form-check">  
+                            <input type="radio" name="consultation_medium" value="Audio Call" class="form-check-input" id="audioCall">  
+                            <label class="form-check-label" for="audioCall">Audio Call</label>  
+                        </div>  
+                        <div class="form-check">  
+                            <input type="radio" name="consultation_medium" value="Chat Consultation" class="form-check-input" id="chatConsultation">  
+                            <label class="form-check-label" for="chatConsultation">Chat Consultation</label>  
+                        </div>  
+                    </div>  
+
+                    <div class="mb-3">  
+                        <!-- <label class="form-label">Select Time</label>   -->
+                        <!-- <select name="appointment_time" class="form-control" required>  
+                            <option value="09:00">09:00</option>  
+                            <option value="09:30">09:30</option>  
+                            <option value="10:00">10:00</option>  
+                            <option value="10:30">10:30</option>  
+                            <option value="11:00">11:00</option>  
+                            <option value="12:00">12:00</option>  
+                            <option value="12:30">12:30</option>  
+                            <option value="13:00">13:00</option>  
+                            <option value="13:30">13:30</option>  
+                        </select>   -->
+                        <label class="form-label mb-1 mt-3 fw-5">Select an Appointment Date</label>  
+                    <div class="mb-3">{% include 'local.html' %}</div>
+
+                    </div>  
+
+                    <!-- <div class="mb-3">  
+                        <input type="date" name="appointment_date" class="form-control" required>  
+                    </div>   -->
+
+                    <button type="submit" class="btn btn-primary">Continue</button>  
+                </form>  
+            </div>  
+        </div>  
+    </div>   
+</section>
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

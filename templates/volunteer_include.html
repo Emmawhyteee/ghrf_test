@@ -1,0 +1,99 @@
+
+<div class="body-volunteer">
+    <div class="">  
+        <h3>Volunteer</h3>  
+         
+    </div>  
+
+     <!-- volunteer Process -->
+     <div class="row donate-process mb-5">
+        <div class="col-md-5">
+            <img src="{{ url_for('static', filename='images2/Frame 701.webp') }}" alt="volunteer Image" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+            <p>We are constructing state-of-the-art hospitals to provide quality healthcare services to communities in need.
+                We are constructing state-of-the-art hospitals to provide quality 
+                healthcare services to communities in need</p>
+
+        </div>
+    </div>
+
+    <!-- How it helps us -->
+    <div>
+    <h4 class="mb-3 text-center">why we need people</h4>
+    </div>
+    <div class="donate-steps d-flex justify-content-around align-items-center text-center ">
+        <div class="step mb-5">
+            <i class="fas fa-hands-helping fa-1x icon2"></i>
+            <h5>To Help</h5>
+            <p>We receive your <br>donations with every <br>bit of love.</p>
+        </div>
+        <div class="step mb-5">
+            <i class="fas fa-hand-holding-usd fa-1x icon3"></i>
+            <h5>To Impact</h5>
+            <p>We take those donations <br> and invest them in life <br>changing projects.</p>
+        </div>
+        <div class="step mb-5">
+            <i class="fas fa-people-carry fa-1x icon4"></i>
+            <h5>To learn</h5>
+            <p>Your investments <br> change the lives of <br> millions.</p>
+        </div>
+    </div>
+
+
+    
+   <!-- Flash Messages -->  
+<div class="container">  
+    {% with messages = get_flashed_messages() %}  
+        {% if messages %}  
+            <div class="alert alert-dismissible fade show" role="alert">  
+                {% for message in messages %}  
+                    <div class="alert alert-success">{{ message }}</div> <!-- or an appropriate class based on message type -->  
+                {% endfor %}  
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
+            </div>  
+        {% endif %}  
+    {% endwith %}  
+</div>  
+
+    <div class="container my-5">  
+        <h2>How to Volunteer</h2>  
+        <ul>  
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>  
+            <li>Proin egestas urna eu mauris ultricies, ac facilisis nunc viverra.</li>  
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>  
+            <li>Proin egestas urna eu mauris ultricies, ac facilisis nunc viverra.</li>  
+        </ul>  
+    </div>  
+
+    <section class="volunteer-form mx-3 py-5">
+    <h2 class="text-center" style="color: aliceblue;">Sign Up</h2>  
+    <div class="container my-5 col-lg-6 donation-form ">  
+        <form method="POST" action="{{ url_for('submit_volunteer') }}" class="py-1">  
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}" >
+
+            <div class="mb-3">  
+                <label for="fullname" class="form-label">Your Name</label>  
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your fullname" required>  
+            </div>  
+            <div class="mb-3">  
+                <label for="email" class="form-label">Your Email</label>  
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>  
+            </div>  
+            <div class="mb-3">  
+                <label for="phone" class="form-label">Your Phone number</label>  
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+234" required>  
+            </div>  
+            <div class="mb-3">  
+                <label for="subject" class="form-label">What are you good at in 10 words</label>  
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>  
+            </div>  
+            <div class="mb-3">  
+                <label for="message" class="form-label">Your Message (optional)</label>  
+                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Enter your message"></textarea>  
+            </div>  
+            <button type="submit" class="btn btn-primary">Send</button>  
+        </form>  
+    </div>  
+  </section>
+</div>
