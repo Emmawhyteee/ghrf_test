@@ -1,0 +1,139 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+<div class="container mt-5 d-flex justify-content-between">
+    <!-- Progress Indicator -->
+
+    <div class="steps col-lg-4 pb-5" style="background-color: #c7def7; border-radius: 5px; margin-right: 4rem; padding: 10px;">  
+        <div class="step  active"><span class="step-circle">1</span> Appointment Information</div>  
+        <div class="step active"> <span class="step-circle">2</span>Patient Information</div>  
+          
+    </div>  
+
+
+
+    <!-- Form Section -->
+    <form>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="firstName" class="form-label">Patient's First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            </div>
+            <div class="col-md-4">
+                <label for="lastName" class="form-label">Patient's Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+            <div class="col-md-4">
+                <label for="dob" class="form-label">Patient's Date of Birth</label>
+                <input type="text" class="form-control" id="dob" placeholder="MM/DD/YYYY">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="male" value="male" name="gender">
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="female" value="female" name="gender">
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <h5>Medical History</h5>
+            <small>Please check any of the following boxes that apply to you</small><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="allergies">
+                <label class="form-check-label" for="allergies">Allergies</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="chronicIllness">
+                <label class="form-check-label" for="chronicIllness">Chronic Illness</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="surgeries">
+                <label class="form-check-label" for="surgeries">Previous Surgeries</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="medications">
+                <label class="form-check-label" for="medications">Medications Currently Taking</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="familyHistory">
+                <label class="form-check-label" for="familyHistory">Family Medical History</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="otherConditions">
+                <label class="form-check-label" for="otherConditions">Other Medical Conditions</label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="documentUpload" class="form-label">Upload Document</label>
+            <input class="form-control" type="file" id="documentUpload">
+        </div>
+        
+
+        <div class="mb-4">
+            <h5>Medical Information <small>(Optional)</small></h5>
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="card text-white" style="background-color: #64b5f6;">
+                        <div class="card-body">
+                            <i class="fa fa-heart py-4"></i>
+                            <h6 class="card-title">Heart Rate</h6>
+                            <p class="card-text"><input type="text" name="heart" class="gg"> BPM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-white" style="background-color: #64b5f6;">
+                        <div class="card-body">
+                            <i class="fa fa-heart py-4"></i>
+                            <h6 class="card-title">Temperature</h6>
+                            <p class="card-text"><input type="text" name="temperature" class="gg"> °C</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-white" style="background-color: #64b5f6;">
+                        <div class="card-body">
+                            <i class="fa fa-heart py-4"></i>
+                            <h6 class="card-title">Blood Pressure</h6>
+                            <p class="card-text"><input type="text" name="bpressure" class="gg"> BPM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue Button -->
+        <div class="d-grid gap-2 col-md-4 mx-auto ">
+            <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+        </div>
+    </form>
+</div>
+
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

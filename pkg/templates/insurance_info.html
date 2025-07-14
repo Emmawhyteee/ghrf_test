@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+<div class="container mt-5 d-flex justify-content-around form-container_personal">
+    
+    <div class="steps col-lg-4 pb-5" style="background-color: #c7def7; border-radius: 5px; margin-right: 4rem; padding: 10px;">  
+        <div class="step  active"><span class="step-circle">1</span> Personal Details</div>  
+        <div class="step active"> <span class="step-circle">2</span> Health History</div>  
+        <div class="step active"><span class="step-circle">3</span> Insurance Information</div>  
+    </div> 
+    
+    <!-- Form -->
+    <div>
+        <form action="/vinsurance/" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+            <!-- Insurance Information Section -->
+            <div class="row mb-4">
+                <h2 class="mb-4">INFORMATION FORM</h2>
+                <div class="col-md-6 mb-3">
+                    <label for="insuranceProvider" class="form-label">Insurance Provider:</label>
+                    <input type="text" class="form-control" id="insuranceProvider" name="insuranceProvider" placeholder="Enter Insurance Provider" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="policyNumber" class="form-label">Policy Number:</label>
+                    <input type="text" class="form-control" id="policyNumber" name="policyNumber" placeholder="Enter Policy Number" required>
+                </div>
+            </div>
+        
+            <!-- Common Details Section -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <label for="dob" class="form-label">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Gender:</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text " class="form-control" id="address" name="address" placeholder="Enter Address" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="zipCode" class="form-label">Zip Code:</label>
+                    <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Enter Zip Code" required>
+                </div>
+            </div>
+        
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number:</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required>
+                </div>
+            </div>
+        
+            <!-- Next Button -->
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

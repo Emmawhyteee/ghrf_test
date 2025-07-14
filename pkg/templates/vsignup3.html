@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+
+
+{% block hero %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row form-container formm w-100 shadow-lg">
+        <!-- Sidebar for Steps -->
+        <div class="col-md-3 left-bg py-4">
+            <ul class="stepper">
+                <li class="d-flex align-items-center active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Account Verification</div>
+                </li>
+                <li class="d-flex align-items-center active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Personal Details</div>
+                </li>
+                <li class="d-flex align-items-center active">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Volunteering Details</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Form -->
+        <div class="col-md-9 py-4">
+            <h3 class="mb-4">Volunteer's Registration Form</h3>
+            <form>
+                <!-- Available Days -->
+                <div class="mb-4">
+                    <label class="form-label">Your Available Days</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm">Mon</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Tue</button>
+                        <button type="button" class="btn btn-primary btn-sm">Wed</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Thu</button>
+                        <button type="button" class="btn btn-primary btn-sm">Fri</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Sat</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Sun</button>
+                    </div>
+                </div>
+
+                <!-- Time Availability -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label for="timeFrom" class="form-label">From</label>
+                        <div class="input-group">
+                            <input type="time" id="timeFrom" class="form-control">
+                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="timeTo" class="form-label">To</label>
+                        <div class="input-group">
+                            <input type="time" id="timeTo" class="form-control">
+                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Toggle -->
+                <div class="mb-4 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="notifications" checked>
+                    <label class="form-check-label toggle-label" for="notifications">Enable notifications for upcoming activities</label>
+                </div>
+
+                <!-- Skills Input -->
+                <div class="mb-4">
+                    <label for="skills" class="form-label">Skills</label>
+                    <input type="text" class="form-control" id="skills" placeholder="Start typing and choose from the dropdown (max 8)">
+                </div>
+
+                <!-- Interests -->
+                <div class="mb-4">
+                    <label class="form-label">Interest</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="interest1" checked>
+                        <label class="form-check-label" for="interest1">Medical Outreach</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="interest2" checked>
+                        <label class="form-check-label" for="interest2">Fundraising</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="interest3" checked>
+                        <label class="form-check-label" for="interest3">Awareness Campaigns</label>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="d-flex justify-content-between">
+                    <a href="#" class="text-primary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    <button type="button" class="btn btn-primary px-4">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

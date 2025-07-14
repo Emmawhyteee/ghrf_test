@@ -1,0 +1,216 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+
+
+
+<!-- Hero Section -->
+<section class="container  my-5 mb-5">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="col-md-4">
+            <h4 style="color: #64B5F5;">Hi,</h4>
+        </div> <br>
+
+            <h1 class=" display-3">Keep your doctors <br> <span class="fw-bold">in the loop</span></h1> 
+            <p>Securely share your comprehensive medical history with  <br> your doctors for better communication and care</p>
+            <!-- <button class="btn btn-primary">Book an appointment</button> -->
+            <a href="{{url_for('doc_search')}}" class="appointment-btn">Book An Appointment</a>
+
+        </div>
+
+        <div class="col-md-6">
+            <img src="../static/images2/Home hero sector image.png" alt="" class="img-fluid">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card p-4 text-center">
+                <i class="fas fa-ambulance fa-2x mb-3"></i>
+                <h5>Emergency Care</h5>
+                <p>Must be the priority for any healthcare</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center bg-primary text-white">
+                <i class="fas fa-stethoscope fa-2x mb-3"></i>
+                <h5>Chamber Service</h5>
+                <p>Clinical excellence must be the priority</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center">
+                <i class="fas fa-hospital-user fa-2x mb-3"></i>
+                <h5>Hospitality</h5>
+                <p>Clinical excellence must be the priority</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="container my-5 mt-5">
+    <h5 class="text-center display-6">How it Works!</h5>
+    <p class="text-center my-3">Discover, book, and experience personalized healthcare effortlessly <br> with our user-friendly Doctor Appointment Website</p>
+    <div class="row my-4 align-items-center my-5">
+        <div class="col-md-6">
+            <img src="../static/images2/Frame 584_3.webp" alt="Find Doctor" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h4><span>1.</span> Find the doctor that resonates with you</h4>
+            <p>Good health is mental, physical, and social wellbeing, not just the absence of diseases. It includes strong connection and quick access to support.</p>
+            <!-- <button class="btn btn-primary">Search doctor</button> -->
+            <a href="{{url_for('doc_search')}}" class="appointment-btn">Search Doctor</a>
+        </div>
+    </div>
+
+    <div class="row my-4 align-items-center flex-md-row-reverse">
+        <div class="col-md-6">
+            <img src="../static/images2/help homeless.webp" alt="" class="img-fluid">
+            
+        </div>
+        <div class="col-md-6">
+            <h4>2. Book and set up an appointment</h4>
+            <p>Good health is mental, physical, and social wellbeing, not just the absence of diseases. It includes strong connection and quick access to support.</p>
+            <!-- <button class="btn btn-primary">Book an appointment</button> -->
+        <a href="{{url_for('doc_search')}}" class="appointment-btn">Book An Appointment</a>
+
+        </div>
+    </div>
+  
+</section>
+
+<!-- Doctor List Section -->
+
+<div class="container my-5">
+    <div class="row">
+        <!-- Doctor List Section -->
+        <div class="col-md-6 col-lg-5 d-flex justify-content-between align-items-center">
+            <div >
+                    <!-- Individual Doctor Card -->
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. James Johnson</h6>
+                    <p class="doctor-specialty">Gynecologist</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                </div>
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. Sarah Smith</h6>
+                    <p class="doctor-specialty">Pediatrician</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.6</div>
+                </div>
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. Emily Davis</h6>
+                    <p class="doctor-specialty">Cardiologist</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.7</div>
+                </div>
+            </div>
+
+
+            
+            <div class="tele-right">
+
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. James Johnson</h6>
+                    <p class="doctor-specialty">Gynecologist</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                </div>
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. Sarah Smith</h6>
+                    <p class="doctor-specialty">Pediatrician</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.6</div>
+                </div>
+                <div class="doctor-card">
+                    <img src="../static/images2/Doctors profile image.webp" alt="Doctor" class="doctor-img">
+                    <h6 class="doctor-name">Dr. Emily Davis</h6>
+                    <p class="doctor-specialty">Cardiologist</p>
+                    <div class="rating"><i class="fas fa-star"></i> 4.7</div>
+                </div>
+            </div>
+            <!-- Add more doctor cards as needed -->
+        </div>
+
+        <!-- Right Content Section -->
+        <div class="col-md-6 col-lg-4 d-flex flex-column justify-content-around text-center mx-5">
+            
+            <div class=" text-md-start ">
+                <h3>3. Get the best</h3>
+                <p>Get the best, receive top-notch medical care from the finest doctors available</p>
+                <!-- <button class="btn btn-primary">Get started</button> -->
+    <a href="{{url_for('doc_search')}}" class="appointment-btn">Get Started</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="py-5 text-center ">
+    <div class="container row">
+        <div class="col-md-6 mb-2">
+            <img src="../static/images2/footer kite plane image.png" alt="" class="arroww img-fluid">
+            <img src="../static/images2/dotted line on footer under the blue plane image.png" alt="" class="dott img-fluid">
+            <h3 class="text-dark">Join our Newsletter</h3>
+            <p class="text-dark">Get the latest healthcare updates delivered to your inbox.</p>
+        </div>
+     
+        <div class="col-md-6 mb-2 mt-4">
+
+            <form class="d-flex justify-content-center ">
+                <input type="email" class="form-control w-50" placeholder="Enter your email">
+                <button type="submit" class="btn news-btn ms-2 ">learn more</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- this will be for the bot side -->
+<div class="col">
+    <a class="arrow" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i><img src="../static/images2/bot.png" alt="" width="50px"></i></a>
+
+</div>
+
+
+
+
+<!-- offcanvas for the chat bot start-->
+<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+    <!-- <h5 class="offcanvas-title" id="offcanvasRightLabel">ASK ME ABOUT HEALTH MATTERS!</h5> -->
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<!-- <div class="offcanvas-body"> -->
+    {# {% include 'FrontEndd.html' %} #}
+<!-- </div> -->
+</div>
+<!-- offcanvas for the chat bot end-->
+
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

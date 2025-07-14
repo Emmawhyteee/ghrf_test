@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+<section class="bg-light">  
+    <div class="container mt-5">  
+        <h1 class="text-center mb-4">Find a Doctor</h1>  
+        <div class="container mt-4">  
+            <form method="POST" class="mb-4">  
+                <div class="input-group mb-3">  
+                    <input type="text" name="location" placeholder="Enter location" class="form-control col-md-8" required>  
+                    <button type="submit" class="btn btn-primary">Search</button>  
+                </div>  
+                <div class="form-check">  
+                    <input type="checkbox" name="availability" class="form-check-input" id="availabilityCheck">  
+                    <label class="form-check-label" for="availabilityCheck">Available</label>  
+                </div>  
+            </form>  
+                
+            <div class="row">  
+                {% if doctors %}
+                    {% for doctor in doctors %}  
+                    <div class="col-md-4">  
+                        <div class="card mb-4">  
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Doctor Image">  
+                            <div class="card-body">  
+                                <h5 class="card-title">Dr. {{ doctor.fname }} {{ doctor.lname }}</h5>  
+                                <p class="card-text">{{ doctor.specialty }}</p>  
+                                <p class="card-text">⭐ {{ doctor.rating }}</p>  
+                                <p class="card-text">{{ doctor.location }}</p>  <!-- Display location -->
+                                <p class="card-text">{{ 'Available' if doctor.available else 'Not Available' }}</p> <!-- Availability status -->
+                            </div>  
+                        </div>  
+                    </div>  
+                    {% endfor %}  
+                {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        No doctors found for the given location.
+                    </div>
+                {% endif %}
+            </div>  
+        </div>
+        
+</section>
+
+
+
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

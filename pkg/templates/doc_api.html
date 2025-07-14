@@ -1,0 +1,87 @@
+<!-- <a href="/create_event_page" class="btn btn-primary"> SignIn to Google Calendar</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Calendar Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #4285F4;  /* Google blue */
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease forwards;
+            opacity: 0;  /* Start with opacity 0 for fade-in effect */
+        }
+
+        a:hover {
+            background-color: #357ae8;  /* Darker shade of blue */
+            transform: translateY(-3px);
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Slide-In Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            a {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Google Calendar Integration</h1>
+    <a href="{{ url_for('authorize') }}">Authorize with Google</a>
+</body>
+</html> -->

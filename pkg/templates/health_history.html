@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+
+{% block hero %}
+<div class="container mt-5 d-flex justify-content-around form-container_personal">
+    
+    <div class="col-lg-4">
+        
+        <!-- Stepper -->
+        <div class="steps" style="background-color: #c7def7; border-radius: 5px; margin-right: 4rem; padding: 10px;">  
+            <div class="step  active"><span class="step-circle">1</span> Personal Details</div>  
+            <div class="step active"> <span class="step-circle">2</span> Health History</div>  
+            <div class="step "><span class="step-circle1">3</span> Insurance Information</div>  
+        </div>  
+
+    </div>
+
+
+    <div >
+        <form action="/vhealth/" method="POST">
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}" >
+
+            <!-- Medical History Section -->
+            <div class="mb-4">
+                <h2 class="mb-4">INFORMATON FORM</h2>
+                <p class="text-muted">Please check any of the following boxes that apply to you</p>
+                <div class="row">
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="allergies">
+                            <label class="form-check-label" for="allergies">Allergies</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chronicIllness">
+                            <label class="form-check-label" for="chronicIllness">Chronic Illness</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="previousSurgeries">
+                            <label class="form-check-label" for="previousSurgeries">Previous Surgeries</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="medications">
+                            <label class="form-check-label" for="medications">Medications Currently Taking</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="familyMedicalHistory">
+                            <label class="form-check-label" for="familyMedicalHistory">Family Medical History</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="otherConditions">
+                            <label class="form-check-label" for="otherConditions">Other Medical Conditions</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Reason for Consultation Section -->
+            <div class="mb-4 col-md-9">
+                <h5>REASON FOR CONSULTATION</h5>
+                <p class="text-muted">Describe your symptoms or reason for consultation</p>
+                <textarea class="form-control" rows="4" placeholder="Enter your reason..." name="consultation_reason"></textarea>
+    
+    
+                <!-- Next Button -->
+                <div class="d-flex justify-content-end mt-1">
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+    
+        </form>
+    </div>
+    <!-- Form -->
+</div>
+{% endblock hero %}
+
+{% block introduction %}
+{% endblock introduction %}
+
+{% block initiatives %}
+{% endblock initiatives %}
+
+{% block impact_stories %}
+{% endblock impact_stories %}
+
+{% block getinvolved %}
+{% endblock getinvolved %}
+
+{% block blog %}
+{% endblock blog %}
+
+{% block contact %}
+{% endblock contact %}

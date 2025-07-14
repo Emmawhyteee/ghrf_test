@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="doctors,cure,medical-care,consultant">
+    <meta name="description" content="A website to buy Everything you Need...">
+    <meta name="author" content="Emmawhyte">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Aos part -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- caligraphy -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sofia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sofia&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/animate.min.css" />
+    <script src="/static/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    
+    <title>{{title}}</title>
+    
+</head>
+<body class="bg-light">
+    <!--navbar section start-->
+    
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand me-2" href="{{url_for('landing')}}"><img src="/static/images/logoo.png" alt="logo" class="img-fluid logoo" >GHRI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav  mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link ms-5" href="{{url_for('landing')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ms-5" href="{{url_for('about')}}">About Us</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link ms-5" href="{{url_for('project')}}">Projects</a>
+                    </li> -->
+                    <!-- Dropdown for service -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ms-4" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Service
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url_for('project')}}">projects</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('services')}}">Our services</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <!-- Dropdown for Emergency -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle ms-4" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Emergency
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url_for('emergency')}}">General Emergency</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('cholera')}}">Cholera</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('mpox')}}">Mpox</a></li>
+                            <li><a class="dropdown-item" href="">Covid 19</a></li>
+                            <li><a class="dropdown-item" href="">Ebola</a></li>
+                            <li><a class="dropdown-item" href="">Chicken pox</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Dropdown for Get Involved -->
+                    <li class="nav-item ">
+                        <a class="nav-link  ms-4" href="{{url_for('get_involved')}}" >
+                            Get Involved
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link ms-5" href="{{url_for('telemed')}}">TeleMed</a>
+                    </li>
+
+                      <!-- Dropdown for More -->
+                      <li class="nav-item dropdown me-5">
+                        <a class="nav-link dropdown-toggle ms-4" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{url_for('blog')}}">Blog</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('podcast')}}">Podcast</a></li>
+                        
+                          
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link ms-5 contact-btn" href="{{url_for('contact')}}">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--navbar section end-->
+
+    {% block hero %}
+    <!-- Hero Section start-->
+    <section class="hero-section" >
+        <div class="container-fluid hero-content">
+            <div class="row align-items-center " >
+                <div class="col-md-12 " >
+                  
+                    <h1>Tranforming HealthCare programs <span class="custom-color">Globally.</span></h1>
+                    <a href="{{url_for('about')}}" class="btn  learn-more" type="button">learn More</a>
+               
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section end-->
+    {% endblock hero %}
+
+    {% block introduction %}
+   
+    <!-- About Us Section -->
+    <section id="about" class="py-5 bg-light text-center gradient">
+        <div class="container ">
+            <h2 class="mb-4">About Us</h2>
+            <p class="lead">A little bit about who we are and what we do.</p>
+        </div>
+
+            <div class="row py-5 ">
+                <div class="col-md-6 about-left" data-aos="fade-right">
+                    <!-- <img src="../static/images2/Frame 706.png" alt="" class="img-fluid"> -->
+                    <img src="../static/images2/Frame 706.webp" class="img-fluid">
+                </div>
+                <div class="col-md-6 about-right" data-aos="fade-left">
+                    <h1 style="color: #64B5F5;">Welcome to Global Health Reform Initiatives</h1>
+                    <p>
+                        We are dedicated to improving health care in Nigeria by raising  awareness,
+                        gathering resources, and building better healthcare facilities...
+                        <a href="">Read more </a>
+                    </p>
+                </div>
+            </div>
+    </section>
+    {% endblock introduction %}
+
+    {% block initiatives %}
+    <!-- Key Initiatives Section start-->
+  
+    <!-- Key Initiatives Section -->
+    <section id="initiatives" class="py-5 text-center">
+        <div class="container">
+            <h2 class="mb-3">Key Initiatives</h2>
+            <p class="mb-5">We thrive at impacting lives...your wellbeing matters!</p>
+            <div class="row mt-4" data-aos="fade-up" data-aos-duration="3000">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card box1 py-2">
+                        <div class="icon1">
+                            <i class="fa fa-hospital "></i>
+    
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Building Hospitals</h5>
+                            <p class="card-text">We are focused on building new hospitals across rural areas.</p>
+                            <p><u style="color: #fff;">
+                                
+                            <a href="">read more</a></u></p>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card box1 py-2">
+                        <div class="icon1">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Training Programs</h5>
+                            <p class="card-text">Providing training programs for healthcare professionals.</p>
+                            <p><u style="color: #fff;"><a href="">read more</a></u></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card box1 py-2">
+                        <div class="icon1">
+                            <i class="fa-solid fa-rectangle-ad"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile Health Clinics</h5>
+                            <p class="card-text">We run mobile clinics to reach underserved populations.</p>
+                            <p><u style="color: #fff;"><a href="">read more</a></u></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Initiatives Section end-->
+    {% endblock initiatives %}
+    
+    {% block impact_stories %}
+    <!-- Impact Stories Section start -->
+    <section class="py-5 impact-stories mb-5">
+        <div class="container">
+            <h2 class="fw-bold text-center custom-color  mb-5">Impact Stories</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <img src="/static/images/girl.webp" alt="John's Story" class="testimonial-image rounded-circle">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                            </div>
+                            <p class="testimonial-text">
+                                John's Story - GHRI Helped me access life-saving treatment
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+              
+
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <img src="/static/images/girl.webp" alt="Mary's Story" class="testimonial-image rounded-circle">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                            </div>
+                            <p class="testimonial-text">
+                                Mary's Story - Thanks to GHRI, my village now has a healthcare center
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <img src="/static/images/girl.webp" alt="Mary's Story" class="testimonial-image rounded-circle">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                            </div>
+                            <p class="testimonial-text">
+                                Mary's Story - Thanks to GHRI, my village now has a healthcare center
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <img src="/static/images/girl.webp" alt="Mary's Story" class="testimonial-image rounded-circle">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                                <span>&#9733;</span>
+                            </div>
+                            <p class="testimonial-text">
+                                Mary's Story - Thanks to GHRI, my village now has a healthcare center
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Impact Stories Section end -->
+    {% endblock impact_stories %}
+    
+    {% block getinvolved %}
+    
+    <!-- Get Involved Section -->
+    <section class="bg-imagee  text-center py-5">  
+        <div class="container">  
+           <div class="involved">
+            <h2 class="display-4 ">Get Involved</h2>  
+            <p class="lead">We have different information on how to support GHRI through donations, volunteering, or partnerships.</p>  
+           </div> 
+           <div class="row mt-5  container">  
+                <div class="col-md-4">  
+                    <div class="card  involved-two volunteer partnerr">  
+                        <div class="card-body">  
+                            <a href="#" class="btn ">
+                                <h5 class="card-title">Volunteer</h5>  
+
+                            </a>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="col-md-4">  
+                    <div class="card  involved-two donatee">  
+                        <div class="card-body">  
+                            <a href="#" class="btn ">
+                                <h5 class="card-title">Donate</h5>  
+
+                            </a>  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="col-md-4">  
+                    <div class="card  involved-two partnerr">  
+                        <div class="card-body">  
+                            <a href="#" class="btn">
+                                <h5 class="card-title">Partner</h5>  
+
+                            </a>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+    <!-- Get Involved Section end-->
+    {% endblock getinvolved %}
+
+{% block blog %}
+<div class="section-title text-center mt-2">Latest News/Blog</div>
+
+<!-- News Section -->
+<div class="container news-blog-container mt-5">
+    <div class="row">
+        <!-- News Column -->
+        <div><h4 class="news-blog-title text-center text-md-start">News</h4></div>
+
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+
+            <!-- News Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="News Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the news card for other entries -->
+        </div>
+
+        <!-- Blog Column -->
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+            <h4 class="news-blog-title text-center text-md-start"></h4>
+            <!-- Blog Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="Blog Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the blog card for other entries -->
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+            <h4 class="news-blog-title text-center text-md-start"></h4>
+            <!-- Blog Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="Blog Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the blog card for other entries -->
+        </div>
+    </div>
+</div>
+
+<!--blog section-->
+<div class="container news-blog-container mt-5">
+    <div class="row">
+        <!-- News Column -->
+        <div><h4 class="news-blog-title text-center text-md-start">Blogs</h4></div>
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+            <!-- Blog Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="Blog Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the blog card for other entries -->
+        </div>
+
+        <!-- Blog Column -->
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+            <!-- <h4 class="news-blog-title text-center text-md-start">Blogs</h4> -->
+            <!-- Blog Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="Blog Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the blog card for other entries -->
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-12  mb-4 ">
+            <!-- <h4 class="news-blog-title text-center text-md-start">Blogs</h4> -->
+            <!-- Blog Cards -->
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="/static/images/girl.webp" class="img-fluid rounded-start" alt="Blog Image">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">July 15, 2024</small></p>
+                            <h5 class="card-title">GHIR has helped so many communities in terms of healthcare and shelter</h5>
+                            <p class="card-text"><a href="#" class="btn btn-link">Read More...</a></p>
+                            <p class="stats">
+                                <span class="me-3"><i class="fa fa-eye"></i> 2k</span> 
+                                <span class="me-3"><i class="fa-regular fa-comment"></i> 1k+</span> 
+                                <span class="me-3"><i class="fa-regular fa-heart"></i> 1k+</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the blog card for other entries -->
+        </div>
+    </div>
+</div>
+
+
+
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="py-5 text-center ">
+    <div class="container row">
+        <div class="col-md-6 mb-2">
+            <img src="../static/images2/footer kite plane image.png" alt="" class="arroww img-fluid">
+            <img src="../static/images2/dotted line on footer under the blue plane image.png" alt="" class="dott img-fluid">
+            <h3 class="text-dark">Join our Newsletter</h3>
+            <p class="text-dark">Get the latest healthcare updates delivered to your inbox.</p>
+        </div>
+     
+        <div class="col-md-6 mb-2 mt-4">
+
+            <form class="d-flex justify-content-center ">
+                <input type="email" class="form-control w-50" placeholder="Enter your email">
+                <button type="submit" class="btn news-btn ms-2 ">learn more</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+    {% endblock blog %}
+
+    {% block contact %}
+<!-- Contact Us start-->
+
+{% endblock contact %}
+
+<!--about-->
+{% block about %}
+{% endblock about %}
+<!--about-->
+
+<!--contact us end-->
+{% block footer %}
+<!--footer start-->        
+<footer>
+    <div class="container py-4 py-lg-5">
+        <div class="row row-cols-2 row-cols-md-4">
+            <div class="col-12 col-md-6">
+                <div class="fw-thin d-flex align-items-center mb-2"><i class="fa-regular fa-heart love"></i><span class="ms-1 text-primary"> GHRI</span></div>
+                <p class="text-primary">Global Health Care in Nigeria.</p>
+            </div>
+
+            <div class="col-sm-4 col-md-2 text-lg-start d-flex flex-column foot">
+                <ul class="list-unstyled ">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">projects</a></li>
+                    <li><a href="#">Get involved</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">podcast</a></li>
+                </ul>
+            </div>
+
+           
+           
+            <div class="col-sm-4 col-md-2 text-lg-start d-flex flex-column foot">
+                <ul class="list-unstyled">
+                    <li><a href="#">Our Features</a></li>
+                    <li><a href="#">Efficiency</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Updates</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4 col-md-2 text-lg-start d-flex flex-column foot">
+                <ul class="list-unstyled">
+                    <li><a href="#">Social</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Threads</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+            <p class="mb-0">© All rights reserved 2024 </p>
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item">Terms</li>
+                <li class="list-inline-item">Privacy</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!--footer end-->        
+{% endblock footer %}
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+<script>
+    AOS.init();
+
+//     $(document).ready(function() {  
+//         $('#registrationForm').on('submit', function(event) {  
+//             event.preventDefault(); // Prevent the default form submission  
+
+//             $.ajax({  
+//                 url: '{{ url_for("submit") }}', // Make sure to use Flask's url_for  
+//                 type: 'POST',  
+//                 data: $(this).serialize(), // Serialize the form data  
+//                 success: function(response) {  
+//                     // Handle success response (You might handle flash messages here)  
+//                     if (response.status=='success'){
+//                         $('#responseMessage').html('<div class="alert alert-success">' + response.message + '</div>');
+//                         window.location.href = response.redirect_url; // Uncomment for redirection  
+//                         // console.log(response.redirect_url)
+
+//                     }else if (response.status=='unmatched_password'){
+//                         $('#responseMessage').html('<div class="alert alert-danger">' + response.message + '</div>'); 
+                        
+//                     }else if (response.status=='user_exists_already!'){
+//                         $('#responseMessage').html('<div class="alert alert-danger">' + response.message + '</div>'); 
+
+//                     }
+//                     // Optionally, redirect or clear the form here  
+//                     // window.location.href = response.redirect_url; // Uncomment for redirection  
+//                 },  
+//                 error: function(jqXHR) {  
+//                     // Handle errors (e.g., validation errors)  
+//                     let errors = jqXHR.responseJSON.errors || ["An error occurred."];  
+//                     $('#responseMessage').html('<div class="alert alert-danger">' + errors.join('<br>') + '</div>');  
+//                 }  
+//             });  
+//         });  
+
+//         // $('#forgotPasswordForm').on('submit', function(event) {  
+//         //     event.preventDefault(); // Prevent the default form submission  
+
+//         //     $.ajax({  
+//         //         url: '',   //url_for("forgot_password") 
+//         //         type: 'POST',  
+//         //         data: $(this).serialize(),  
+//         //         success: function(response) {  
+//         //             $('#forgotPasswordResponse').html('<div class="alert alert-success">' + response.message + '</div>');  
+//         //         },  
+//         //         error: function(jqXHR) {  
+//         //             let errors = jqXHR.responseJSON.errors || ["An error occurred."];  
+//         //             $('#forgotPasswordResponse').html('<div class="alert alert-danger">' + errors.join('<br>') + '</div>');  
+//         //         }  
+//         //     });  
+//         // });  
+        
+
+//   // Function to copy the donation link
+// //   document.getElementById("copyButton").addEventListener("click", function() {
+// //         // Get the text field
+// //         var donationLink = document.getElementById("donationLink");
+
+// //         // Select the text field
+// //         donationLink.select();
+// //         donationLink.setSelectionRange(0, 99999); // For mobile devices
+
+// //         // Copy the text inside the text field
+// //         navigator.clipboard.writeText(donationLink.value).then(function() {
+// //             alert("Link copied: " + donationLink.value);
+// //         }).catch(function() {
+// //             alert("Failed to copy the link.");
+// //         });
+// //     });
+
+//     });  
+
+    
+  </script> 
+</body>  
+</html>
+    
+</body>

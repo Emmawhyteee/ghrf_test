@@ -1,0 +1,292 @@
+<!DOCTYPE html>  
+<html lang="en">  
+
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Compact Responsive Appointment Calendar</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            background-color: #f8f9fa;  
+            margin: 20px;  
+        }  
+
+        .calendar {  
+            display: grid;  
+            grid-template-columns: repeat(7, 1fr); /* 7 days of the week */  
+            gap: 2px; /* Reduced space between cells */  
+            margin-top: 10px; /* Reduced top margin */  
+        }  
+
+        .day,  
+        .day-label {  
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
+            height: 60px; /* Set a smaller height */  
+            border-radius: 5px; /* Smaller border-radius */  
+            cursor: pointer;  
+            transition: background-color 0.3s;  
+            font-size: 1rem; /* Smaller font size */  
+        }  
+
+        .day-label {  
+            background-color: #e9ecef; /* Light gray for label */  
+            font-weight: bold;  
+        }  
+
+        .day {  
+            background-color: #ffffff; /* White for day cells */  
+            border: 1px solid #dee2e6;  
+        }  
+
+        .day:hover {  
+            background-color: #e9ecef; /* Highlighted on hover */  
+        }  
+
+        .scheduled {  
+            background-color: #28a745; /* Green for scheduled days */  
+            color: white;  
+        }  
+
+        .active {  
+            background-color: #007bff; /* Blue for active day */  
+            color: white;  
+        }  
+
+        .today {  
+            background-color: #ffc107; /* Yellow for today */  
+            color: black;  
+            font-weight: bold;  
+        }  
+
+        @media (max-width: 1200px) {  
+            .day {  
+                height: 50px; /* Further adjust height */  
+            }  
+        }  
+
+        @media (max-width: 800px) {  
+            .calendar {  
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for small screens */  
+            }  
+            .day {  
+                height: 45px; /* Further reduce height */  
+            }  
+        }  
+
+        @media (max-width: 600px) {  
+            .calendar {  
+                grid-template-columns: repeat(4, 1fr); /* 4 columns for smaller screens */  
+            }  
+            .day {  
+                height: 40px; /* Further reduce height */  
+            }  
+        }  
+
+        @media (max-width: 400px) {  
+            .calendar {  
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for very small screens */  
+            }  
+            .day {  
+                height: 35px; /* Further reduce height */  
+                font-size: 0.8rem; /* Smaller font size */  
+            }  
+        }  
+    </style>  
+</head>  
+
+<body>  
+    <div class="container mt-4">  
+        <h4 id="month-display" class="text-center "></h4>  
+        <div class="text-center mb-3">  
+            <button class="btn btn-secondary" id="prevMonth" onclick="changeMonth(-1)">Previous Month</button>  
+            <button class="btn btn-secondary" id="nextMonth" onclick="changeMonth(1)">Next Month</button>  
+        </div>  
+        <div class="calendar" id="calendar">  
+            <div class="day-label">Sun</div>  
+            <div class="day-label">Mon</div>  
+            <div class="day-label">Tue</div>  
+            <div class="day-label">Wed</div>  
+            <div class="day-label">Thu</div>  
+            <div class="day-label">Fri</div>  
+            <div class="day-label">Sat</div>  
+        </div>  
+    </div>  
+
+    <div class="modal" id="scheduleModal" tabindex="-1" role="dialog">  
+        <div class="modal-dialog" role="document">  
+            <div class="modal-content">  
+                <div class="modal-header">  
+                    <h5 class="modal-title">Schedule Appointment</h5>  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+                        <span aria-hidden="true">&times;</span>  
+                    </button>  
+                </div>  
+                <div class="modal-body">  
+                    <div class="form-group">  
+                        <label for="eventType">Event Type:</label>  
+                        <input type="text" id="eventType" class="form-control" placeholder="Meeting" required>  
+                    </div>  
+                    <div class="form-group">  
+                        <label for="startTime">Start Time:</label>  
+                        <input type="datetime-local" id="startTime" class="form-control" required>  
+                    </div>  
+                    <div class="form-group">  
+                        <label for="endTime">End Time:</label>  
+                        <input type="datetime-local" id="endTime" class="form-control" required>  
+                    </div>  
+                    <div class="form-group">  
+                        <label for="description">Description:</label>  
+                        <textarea id="description" class="form-control" placeholder="Enter a brief description"></textarea>  
+                    </div>  
+                </div>  
+                <div class="modal-footer">  
+                    
+                    <button id="submitEvent" class="btn btn-primary">Schedule</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+
+    <script>
+        const calendarElement = document.getElementById('calendar');  
+        const monthDisplay = document.getElementById('month-display');  
+        const modal = $('#scheduleModal');  
+        const submitEventButton = document.getElementById("submitEvent");  
+    
+        let currentMonth = new Date().getMonth();  
+        let currentYear = new Date().getFullYear();  
+        let selectedDate = '';  
+        let selectedElement = null;  
+        let events = []; // Store scheduled events  
+    
+        function renderCalendar(month, year) {  
+            // Clear previous days from the calendar  
+            const days = calendarElement.getElementsByClassName('day');  
+            for (let i = days.length - 1; i >= 7; i--) {  
+                calendarElement.removeChild(days[i]);  
+            }  
+    
+            monthDisplay.innerText = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;  
+            
+            const firstDay = new Date(year, month, 1).getDay(); // First day of the month  
+            const totalDays = new Date(year, month + 1, 0).getDate(); // Total days in the month  
+            const today = new Date();  
+    
+            // Fill in empty cells for days before the first of the month  
+            for (let i = 0; i < firstDay; i++) {  
+                calendarElement.innerHTML += `<div class="day"></div>`; // Empty cells  
+            }  
+            
+            // Fill in the days of the month  
+            for (let day = 1; day <= totalDays; day++) {  
+                const dateString = `${year}-${month + 1}-${day}`;  
+                const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;  
+                calendarElement.innerHTML += `  
+                    <div class="day ${isToday ? 'today' : ''}" onclick="openModal('${dateString}', this)">  
+                        ${day}  
+                    </div>  
+                `;  
+            }  
+        }  
+    
+        function changeMonth(delta) {  
+            currentMonth += delta;  
+            if (currentMonth < 0) {  
+                currentMonth = 11;  
+                currentYear--;  
+            } else if (currentMonth > 11) {  
+                currentMonth = 0;  
+                currentYear++;  
+            }  
+            renderCalendar(currentMonth, currentYear);  
+        }  
+    
+        function openModal(date, element) {  
+            if (selectedElement) {  
+                selectedElement.classList.remove('active');  
+            }  
+            selectedDate = date;  
+            selectedElement = element;  
+            selectedElement.classList.add('active');  
+            modal.modal('show');  
+        }  
+    
+        submitEventButton.onclick = function() {  
+            const eventType = document.getElementById("eventType").value;  
+            const startTime = new Date(document.getElementById("startTime").value);  
+            const endTime = new Date(document.getElementById("endTime").value);  
+            const description = document.getElementById("description").value;  
+    
+            if (!eventType || !startTime || !endTime) {  
+                alert("Please fill in all required fields.");  
+                return;  
+            }  
+    
+            // Prepare data to send to the server
+            const appointmentData = {
+                summary: description || eventType,  // Use description or event type as summary
+                start_time: startTime.toISOString(),  
+                end_time: endTime.toISOString(),  
+                patient_email: 'user@example.com',  // Replace with actual user email
+                patient_name: 'John Doe'  // Replace with actual user name
+            };
+    
+            // Send POST request to schedule the appointment
+            fetch('/schedule', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(appointmentData),
+            })
+            .then(response => {
+     if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(`Appointment scheduled! Link: ${data.link}`);
+                markScheduledDate(startTime);  
+                modal.modal('hide');  
+                clearModalFields();  
+            })
+            .catch(error => {
+                console.error('Error scheduling appointment:', error);
+                alert('Failed to schedule appointment. Please try again.');
+            });
+        };  
+    
+        function markScheduledDate(date) {  
+            const day = new Date(date).getDate();  
+            const days = calendarElement.getElementsByClassName('day');  
+    
+            for (let dayDiv of days) {  
+                if (parseInt(dayDiv.innerText) === day) {  
+                    dayDiv.classList.add('scheduled');  
+                }  
+            }  
+        }  
+    
+        function clearModalFields() {  
+            document.getElementById("eventType").value = '';  
+            document.getElementById("startTime").value = '';  
+            document.getElementById("endTime").value = '';  
+            document.getElementById("description").value = '';  
+        }  
+    
+        // Render the initial calendar  
+        renderCalendar(currentMonth, currentYear);  
+    </script>
+</body>  
+
+</html>
